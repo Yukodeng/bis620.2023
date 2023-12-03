@@ -1,0 +1,3 @@
+load("/Users/yufeideng/Library/CloudStorage/OneDrive-YaleUniversity/FA23/BIS 620/bis620.2023/data/conditions.rda")
+load("/Users/yufeideng/Library/CloudStorage/OneDrive-YaleUniversity/FA23/BIS 620/bis620.2023/data/accel.rda")
+load("/Users/yufeideng/Library/CloudStorage/OneDrive-YaleUniversity/FA23/BIS 620/bis620.2023/data/sponsors.rda")

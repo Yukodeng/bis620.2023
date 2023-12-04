@@ -1,4 +1,6 @@
-#' Launch the application
+#' @title title Launch the application
+#'
+#' @description Launches the Clinical Trials Query shiny app
 #' @export
 run_application <- function() {
   appDir <- file.path("inst", "app.R")

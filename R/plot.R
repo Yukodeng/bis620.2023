@@ -22,15 +22,17 @@ plot_accel = function(x, x_var = "time") {
 #' date range, sponsor type) and returns returns a histogram showing the distribution
 #' of study phases
 #' @param studies A tibble. The data table to be filtered
-#' @param sponsortype A string. The sponsortype entered by the users
+#' @param sponsors A tibble. The data table to be joined
 #' @param kw A string. The keyword string entered by the users
 #' @param dates A list of two date values (start and end date)
 #' @param color A string. The color string chosen by the users
+#' @param sponsortype A string. The sponsortype entered by the users
 #'
 #' @return A plot with filtered entries
 #' @importFrom ggplot2 ggplot aes geom_col scale_x_discrete ylab
 #' @importFrom dplyr left_join filter count collect
-#'
+#' @importFrom utils head
+#' @importFrom tibble as_tibble
 create_phase_hist_plot = function(studies, sponsors, kw, dates, color, sponsortype) {
   # sponsors = ctrialsgov::ctgov_query(sponsor_type = sponsortype)
   d = data_query_search(studies, kw, dates)|> head(1000)
@@ -57,6 +59,7 @@ create_phase_hist_plot = function(studies, sponsors, kw, dates, color, sponsorty
 #' histogram color choice, and returns returns a histogram showing the
 #' distribution of different study types
 #' @param studies A tibble. The data table to be filtered
+#' @param sponsors A tibble. The data table to be joined
 #' @param sponsortype A string. The sponsortype entered by the users
 #' @param kw A string. The keyword string entered by the users
 #' @param dates A list of two date values (start and end date)
@@ -65,6 +68,8 @@ create_phase_hist_plot = function(studies, sponsors, kw, dates, color, sponsorty
 #' @return A histogram plot
 #' @importFrom ggplot2 ggplot geom_col scale_x_discrete labs
 #' @importFrom dplyr select collect left_join filter group_by summarize
+#' @importFrom tibble as_tibble
+#' @importFrom utils head
 create_studytype_histogram = function(studies, sponsors, sponsortype, kw, dates, color){
   # sponsors = ctrialsgov::ctgov_query(sponsor_type = sponsortype)
   d = data_query_search(studies, kw, dates)|> head(1000)
@@ -91,8 +96,9 @@ create_studytype_histogram = function(studies, sponsors, sponsortype, kw, dates,
 #' @param dates A list of two date values (start and end date)
 #'
 #' @return A pie chart plot
-#' @importFrom ggplot2 ggplot geom_bar coord_polar labs them_void them geom_text
+#' @importFrom ggplot2 ggplot geom_bar coord_polar labs theme_void theme geom_text position_stack
 #' @importFrom dplyr select collect left_join filter count group_by summarize
+#' @importFrom utils head
 create_purpose_pie = function(studies, sponsortype, kw, dates){
   sponsors = ctrialsgov::ctgov_query(sponsor_type = sponsortype)
   d = data_query_search(studies, kw, dates)|> head(1000)
@@ -121,6 +127,7 @@ create_purpose_pie = function(studies, sponsortype, kw, dates){
 #' Function that creates histogram showing the conditions that trials in a query are examining,
 #' filtered by dates and sponsors information. Apply color feature in the histogram.
 #' @param studies A tibble. The data table to be filtered
+#' @param sponsors A tibble. The data table to be joined
 #' @param conditions A tibble. The data table to be filtered
 #' @param kw A string. The keyword string entered by the users
 #' @param sponsortype A string. The sponsortype entered by the users
@@ -128,9 +135,11 @@ create_purpose_pie = function(studies, sponsortype, kw, dates){
 #' @param color A string. The color string chosen by the users
 #'
 #' @return A plot with filtered entries
-#' @importFrom ggplot2 ggplot geom_col coord_flip labs them_bw
-#' @importFrom dplyr select collect inner_join filter count arrange group_by
-#'
+#' @importFrom ggplot2 ggplot geom_col coord_flip labs theme_bw
+#' @importFrom dplyr select collect inner_join filter count arrange group_by desc
+#' @importFrom stats reorder
+#' @importFrom tibble as_tibble
+#' @importFrom utils head
 create_condition_histogram <- function(studies, sponsors, conditions, kw, sponsortype, dates, color) {
   # sponsors = ctrialsgov::ctgov_query(sponsor_type = sponsortype)
   # Join studies with conditions based on nct_id and filter by title keywords
@@ -159,14 +168,17 @@ create_condition_histogram <- function(studies, sponsors, conditions, kw, sponso
 #' Function that creates a pie chart showing the distribution of intervention type that trials in a query are examining,
 #' filtered by dates and sponsors information.
 #' @param studies A tibble. The data table to be filtered
-#' @param intervention A tibble. The data table to be filtered
+#' @param sponsors A tibble. The data table to be joined
+#' @param interventions A tibble. The data table to be filtered
 #' @param kw A string. The keyword string entered by the users
 #' @param sponsortype A string. The sponsor type entered by the users
 #' @param dates A list of two date values (start and end date)
 #'
 #' @return A pie chart with filtered entries
-#' @importFrom ggplot2 ggplot geom_bar coord_polar labs them_void them geom_text
-#' @importFrom dplyr select left_join inner_join filter count group_by arrange
+#' @importFrom ggplot2 ggplot geom_bar coord_polar labs theme_void theme geom_text element_blank position_stack scale_fill_hue
+#' @importFrom dplyr select left_join inner_join filter count group_by arrange desc
+#' @importFrom tibble as_tibble
+#' @importFrom utils head
 create_intervention_pie_data <- function(studies, sponsors, interventions, kw, sponsortype, dates) {
   # sponsors = ctrialsgov::ctgov_query(sponsor_type = sponsortype)
   d = data_query_search(studies, kw, dates)|> head(1000)
@@ -199,7 +211,8 @@ create_intervention_pie_data <- function(studies, sponsors, interventions, kw, s
 #' Function that creates a histogram showing the specific intervention that trials in a query are examining,
 #' filtered by intervention type, dates and sponsors information. Apply color feature in the histogram.
 #' @param studies A tibble. The data table to be filtered
-#' @param intervention A tibble. The data table to be filtered
+#' @param sponsors A tibble. The data table to be joined
+#' @param interventions A tibble. The data table to be filtered
 #' @param kw A string. The keyword string entered by the users
 #' @param interventionType A string. The intervention type entered by the users
 #' @param sponsortype A string. The sponsor type entered by the users
@@ -207,8 +220,11 @@ create_intervention_pie_data <- function(studies, sponsors, interventions, kw, s
 #' @param color A string. The color string chosen by the users
 #'
 #' @return A plot with filtered entries
-#' @importFrom ggplot2 ggplot geom_col  labs them_bw coord_flip
-#' @importFrom dplyr select left_join inner_join filter count group_by arrange
+#' @importFrom ggplot2 ggplot geom_col  labs theme_bw coord_flip
+#' @importFrom dplyr select left_join inner_join filter count group_by arrange desc
+#' @importFrom stats reorder
+#' @importFrom tibble as_tibble
+#' @importFrom utils head
 create_intervention_histogram <- function(studies, sponsors, interventions, kw, interventionType, sponsortype, dates, color) {
   # sponsors = ctrialsgov::ctgov_query(sponsor_type = sponsortype)
   d = data_query_search(studies, kw, dates)|> head(1000)

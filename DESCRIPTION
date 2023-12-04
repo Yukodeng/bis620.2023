@@ -1,10 +1,10 @@
 Package: bis620.2023
 Type: Package
-Title: Functions and Data for the BIS620 (2023) Class
+Title: Clinical Trials Query
 Version: 0.1.0
-Author: Yufei Deng
-Maintainer: The package maintainer <michael.kane@yale.ediu>
-Description: Functions and data captured for class.
+Author: Yufei Deng, Yining Chen, Ziqing Ji
+Maintainer: The package maintainer <ziqing.ji@yale.edu>
+Description: This web application allows users to query clinical trial studies, interact with the filtered data table, and visualize and customize graphs according to needs. To learn more information about the clinical trials, go to the website ClinicalTrials.gov.
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
@@ -16,11 +16,9 @@ Imports:
   ggplot2,
   purrr,
   tidyr,
-  DT,
-  DBI,
   shiny,
   ctrialsgov,
-  duckdb,
+  tibble
 Suggests: 
     knitr,
     rmarkdown,

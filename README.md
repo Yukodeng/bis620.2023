@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/YukoDeng/bis620.2023/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/YukoDeng/bis620.2023/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/Yukodeng/bis620.2023/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Yukodeng/bis620.2023/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of bis620.2023 is to …
@@ -17,7 +17,7 @@ You can install the development version of bis620.2023 from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("YukoDeng/bis620.2023")
+devtools::install_github("Yukodeng/bis620.2023")
 ```
 
 ## Example

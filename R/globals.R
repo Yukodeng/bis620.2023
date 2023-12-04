@@ -1,1 +1,1 @@
-utils::globalVariables(c("X", "Y", "Z", "Acceleration"))
+utils::globalVariables(c("X", "Y", "Z", "Acceleration", "agency_class", "condition_name", "intervention_name", "intervention_type", "n", "nct_id", "percentage", "phase", "primary_purpose", "start_date", "study_type", "completion_date"))

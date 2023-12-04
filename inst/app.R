@@ -6,11 +6,8 @@ library(ggplot2)
 library(ctrialsgov)
 
 con = dbConnect(
-  duckdb(file.path("..", "data-raw", "ctrialsgovdb","ctrialsgov.duckdb")
+  duckdb(file.path("..", "data-raw", "ctrialsgov.duckdb")
     )
-)
-ctgov_load_duckdb_file(
-  file.path("..", "data-raw", "ctrialsgovdb", "ctgov-derived.duckdb")
 )
 
 studies = tbl(con, "studies")
@@ -136,6 +133,7 @@ ctApp <- {
   # Run the application
   shinyApp(ui = ui, server = server)
 }
+
 
 
 

@@ -22,6 +22,8 @@ install_github("Yukodeng/bis620.2023")
 devtools::install_github("Yukodeng/bis620.2023")
 ```
 
+***Important note:** This package assumes there is a `ctrialsgov.duckdb` file under the `/data-raw` folder. Due to file size restriction of GitHub, this file is removed from the package directory. To use the shiny app function of this package, make sure to manually add this file to the designated location.*
+
 ## Example
 
 This is a basic example which shows you how to solve a common problem:

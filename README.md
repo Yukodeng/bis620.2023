@@ -5,10 +5,37 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/Yukodeng/bis620.2023/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Yukodeng/bis620.2023/actions/workflows/R-CMD-check.yaml)
+[![test-coverage](https://github.com/Yukodeng/bis620.2023/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/Yukodeng/bis620.2023/actions/workflows/test-coverage.yaml)
 
 <!-- badges: end -->
 
 The *bis620.2023* project integrates the Clinical Trials Query Shiny app we built in the last homework assignment into an R package, which allows easier management of the app features and testing of its functionality.
+
+### Package features
+
+Users can filter the dataset by specific fields, including:
+
+1.  Title keywords search
+
+2.  Define study date ranges
+
+3.  Define sponsor types
+
+4.  Histogram visualization customization
+
+Displaying Visualization includes:
+
+1.  Phase Histogram
+
+2.  Condition Histogram
+
+3.  Primary Purpose Pie Chart
+
+4.  Study Type Histogram
+
+5.  Intervention Type Pie Chart
+
+6.  Intervention Histogran Specified by Intervention Type
 
 ## Installation
 

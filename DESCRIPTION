@@ -2,7 +2,7 @@ Package: bis620.2023
 Type: Package
 Title: Clinical Trials Query
 Version: 0.1.0
-Author: Yufei Deng, Yining Chen, Ziqing Ji
+Author: Yufei Deng, Yining Chen, Ziqing Ji.
 Maintainer: The package maintainer <ziqing.ji@yale.edu>
 Description: This web application allows users to query clinical trial studies, interact with the filtered data table, and visualize and customize graphs according to needs. To learn more information about the clinical trials, go to the website ClinicalTrials.gov.
 License: GPL (>= 2)
